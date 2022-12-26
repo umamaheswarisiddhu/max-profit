@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function maxProfit(T, I) {
+    // Define the 2D array dp[i][j]
+    let dp = new Array(T+1).fill(0).map(() => new Array(I+1).fill(0));
+  
+    // Loop through each unit of time
+    for (let i = 1; i <= T; i++) {
+      // Loop through each land parcel
+      for (let j = 1; j <= I; j++) {
+        // Develop a theatre
+        dp[i][j] = Math.max(dp[i][j], dp[i-5][j-2] + 1500);
+  
+        // Develop a pub
+        dp[i][j] = Math.max(dp[i][j], dp[i-4][j-1] + 1000);
+  
+        // Develop a commercial park
+        dp[i][j] = Math.max(dp[i][j], dp[i-10][j-3] + 3000);
+      }
+    }
+  
+    // Return the maximum profit
+    return Math.max(...dp[T]);
+  }
+  
+  // Test the function
+  console.log(maxProfit(30, 10));  // Expected output: 9000
+    </script>
+    
+</body>
+</html>
